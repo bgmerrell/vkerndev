@@ -22,7 +22,7 @@ echo "X11Forwarding yes" >> /etc/ssh/sshd_config
 # create a user
 useradd -m user -G wheel
 mkdir /home/user/.ssh
-mv /root/.ssh/authorized_keys /home/user/.ssh/authorized_keys
+cp /root/.ssh/authorized_keys /home/user/.ssh/authorized_keys
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # fill the fstab
