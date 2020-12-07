@@ -37,7 +37,8 @@ This should be all you need to do:
 * Run `deploy_vm.sh`, this creates your raw Arch Linux VM image
   (`arch_disk.vm`)
 * Build a kernel (you can use the included Linux config from this repo) and
-  make the kernel headers. Using kernel modules isn't tested yet.
+  make the kernel headers. Using kernel modules isn't supported yet (but should
+  be the next feature).
 * Update the variables in `run_vm.sh` to be suitable for your system
 * Run `run_vm.sh` to run your VM
 * Wham, you should be running a VM with your specified Linux kernel and
@@ -52,6 +53,6 @@ This should be all you need to do:
 # TODO
 
 * Better document usage on host distros other than Arch
-* Kernel modules haven't been used or tested for this environment. How do we
-  best support them? Maybe something like virtme? Need to document behavior.
+* How to best support and automate using kernel modules? Maybe something like
+  virtme?
 * Consider using qcow2 (overlay?) and utilizing snapshots
