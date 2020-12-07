@@ -34,12 +34,16 @@ better suit your needs.
 
 This should be all you need to do:
 
-* Run `deploy_vm.sh`, this creates your raw Arch Linux image (`arch_disk.vm`)
+* Run `deploy_vm.sh`, this creates your raw Arch Linux VM image
+  (`arch_disk.vm`)
 * Build a kernel (you can use the included Linux config from this repo) and
-  make the kernel headers
+  make the kernel headers. Using kernel modules isn't tested yet.
 * Update the variables in `run_vm.sh` to be suitable for your system
-* Run `run_vm.sh`
-* Wham, you should be running a VM with your specified Linux kernel and headers
+* Run `run_vm.sh` to run your VM
+* Wham, you should be running a VM with your specified Linux kernel and
+  headers. Use shutdown(8) when you're done. Changes on the gues will persist
+  so consider making a pristine copy of your guest image.
+* Going forward you just need to run `run_vm.sh` to run your VM again.
 
 # Demo
 
@@ -50,3 +54,4 @@ This should be all you need to do:
 * Better document usage on host distros other than Arch
 * Kernel modules haven't been used or tested for this environment. How do we
   best support them? Maybe something like virtme? Need to document behavior.
+* Consider using qcow2 (overlay?) and utilizing snapshots
