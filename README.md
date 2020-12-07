@@ -26,7 +26,6 @@ better suit your needs.
 * qemu
 * pacstrap (part of the arch-install-scripts in Arch, but I believe this
   utility can be installed on other distros).
-  default for most desktop systems I would imagine).
 * Some other basic packages, which should be obvious from the scripts or
   runtime failures.
 
