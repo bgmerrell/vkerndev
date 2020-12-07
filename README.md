@@ -41,7 +41,7 @@ This should be all you need to do:
 * Update the variables in `run_vm.sh` to be suitable for your system
 * Run `run_vm.sh` to run your VM
 * Wham, you should be running a VM with your specified Linux kernel and
-  headers. Use shutdown(8) when you're done. Changes on the gues will persist
+  headers. Use shutdown(8) when you're done. Changes on the guest will persist
   so consider making a pristine copy of your guest image.
 * Going forward you just need to run `run_vm.sh` to run your VM again.
 
