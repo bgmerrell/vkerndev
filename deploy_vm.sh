@@ -31,5 +31,5 @@ sudo umount mnt
 # Run setup.sh script
 sudo mount $disk_name mnt
 sleep 1
-sudo arch-chroot mnt /bin/bash -c "cd /root && ./setup.sh && rm setup.sh"
+sudo chroot mnt /bin/bash -c "cd /root && ./setup.sh && rm setup.sh"
 sudo umount mnt
