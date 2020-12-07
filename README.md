@@ -34,8 +34,9 @@ better suit your needs.
 This should be all you need to do:
 
 * Run `deploy_vm.sh`, this creates your raw Arch Linux VM image
-  (`arch_disk.vm`), installs base userspace packages, and does some
-  configuration.
+  (`arch_disk.vm`). This script also installs base userspace packages and
+  minimal other packages into the image. The image is also configured (to
+  start some services and login automatically, for example).
 * Build a kernel (you can use the included Linux config from this repo) and
   make the kernel headers. Using kernel modules isn't supported yet (but should
   be the next feature).
