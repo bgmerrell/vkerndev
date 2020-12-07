@@ -56,3 +56,7 @@ This should be all you need to do:
 * How to best support and automate using kernel modules? Maybe something like
   virtme?
 * Consider using qcow2 (overlay?) and utilizing snapshots
+
+# CREDITS
+
+Thanks to André Almeida for the [underlying idea](https://www.youtube.com/watch?v=HVPTpGLTJVw).
