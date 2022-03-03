@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -ex
+
 disk_space=${1:-'8G'}
 disk_name=${2:-'arch_disk.vm'}
 
