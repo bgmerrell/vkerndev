@@ -8,7 +8,9 @@ import sys
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Run qemu VM')
+    parser = argparse.ArgumentParser(
+        description='Run qemu VM',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         '-k', '--kernel', dest='kernel_path',
         help='path to the kernel to use on the VM',
@@ -46,15 +48,19 @@ def main():
     args = parse_args()
     if args.debug:
         logging.getLogger().setLevel(logging.DEBUG)
-    qemu_cmd_str = ('qemu-system-x86_64 '
+    if not os.path.isdir(args.shared_folder):
+        logging.critical(
+            f"shared folder path doesn't exist: {args.shared_folder}")
+    qemu_cmd_str = (
+        'qemu-system-x86_64 '
         f'-boot order=a -drive file={args.vm_path},format=raw,if=virtio '
         f'-nographic -kernel {args.kernel_path} '
         '-append "root=/dev/vda rw console=ttyS0 loglevel=7 '
-            'raid=noautodetect" '
+        'raid=noautodetect" '
         f'-fsdev local,id=fs1,path={args.shared_folder},security_model=none '
         '-device virtio-9p-pci,fsdev=fs1,mount_tag=shared_folder '
         f'-fsdev local,id=fs2,path={args.kernel_headers_path},'
-            'security_model=none '
+        'security_model=none '
         '-device virtio-9p-pci,fsdev=fs2,mount_tag=linux_headers '
         f'--enable-kvm -m {args.vm_memory} -smp {args.vm_num_cpus} -cpu host '
         '-net nic,model=e1000 -net user,hostfwd=tcp::1313-:22')
