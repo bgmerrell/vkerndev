@@ -27,12 +27,16 @@ def parse_args():
             os.path.expanduser('~'), 'code/linux/usr/include'))
     parser.add_argument(
         '-m', '--memory', dest='vm_memory',
-        help='Amount of memory to use on the VM using a "M" or "G" suffix to '
+        help='amount of memory to use on the VM using a "M" or "G" suffix to '
              'signify megabytes or gigabytes respectively',
         default='2G')
     parser.add_argument(
         '-c', '--cpus', dest='vm_num_cpus',
-        help='Number of CPUs for the VM', type=int, default='2')
+        help='number of CPUs for the VM', type=int, default=2)
+    parser.add_argument(
+        '-p', '--ssh-port', dest='host_ssh_port',
+        help='host port to forward to the SSH port on the VM', type=int,
+        default=1313)
     parser.add_argument(
         '--vm', dest='vm_path',
         help='path to the vm image', default='arch_disk.vm')
@@ -63,7 +67,8 @@ def main():
         'security_model=none '
         '-device virtio-9p-pci,fsdev=fs2,mount_tag=linux_headers '
         f'--enable-kvm -m {args.vm_memory} -smp {args.vm_num_cpus} -cpu host '
-        '-net nic,model=e1000 -net user,hostfwd=tcp::1313-:22')
+        f'-net nic,model=e1000 -net user,hostfwd=tcp::{args.host_ssh_port}-:22'
+    )
     qemu_cmd = shlex.split(qemu_cmd_str, posix=True)
     logging.debug(f'Running: {qemu_cmd}')
     sys.stdout.flush()

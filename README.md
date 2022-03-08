@@ -47,6 +47,8 @@ This should be all you need to do:
 * Wham, you should be running a VM with your specified Linux kernel and
   headers. Use `shutdown(8)` when you're done. Changes on the guest will
   persist so consider making a pristine copy of your guest image.
+* You can SSH to your VM using `ssh -X root@localhost -p 1313` (1313 is the
+  default host port that is forwarded to the VM).
 * Going forward you just need to run `run_vm.sh` to run your VM again.
 
 # Advanced deploy_vm.py usage
