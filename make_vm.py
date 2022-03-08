@@ -18,7 +18,8 @@ class Mount(object):
 
     def __enter__(self):
         if self.mnt_dir == self.DEFAULT_DIR:
-            os.mkdir(self.mnt_dir)
+            if not os.path.isdir(self.mnt_dir):
+                os.mkdir(self.mnt_dir)
         elif not os.path.isdir(self.mnt_dir):
             raise RuntimeError(
                 f'Non-default mount directory {self.mnt_dir} must be created '
