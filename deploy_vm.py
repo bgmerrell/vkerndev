@@ -10,7 +10,7 @@ import time
 
 class Mount(object):
 
-    DEFAULT_DIR='mnt'
+    DEFAULT_DIR = 'mnt'
 
     def __init__(self, image_name, mnt_dir):
         self.image_name = image_name
@@ -123,7 +123,7 @@ def allocate_image(size, name):
     cmd = ['truncate', '-s', size, name]
     logging.debug(f'Running: {cmd}')
     subprocess.run(cmd, check=True)
-     
+
     cmd = ['mkfs.ext4', name]
     logging.debug(f'Running: {cmd}')
     subprocess.run(cmd, check=True)
