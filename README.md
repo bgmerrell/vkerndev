@@ -36,10 +36,10 @@ This is not an exhaustive list. Some other basic packages are also required.
 
 This should be all you need to do:
 
-* Run `deploy_vm.py`, this creates your raw Arch Linux VM image
-  (`arch_disk.vm`, be default). This script also installs base userspace
-  packages and minimal other packages into the image. The image is also
-  configured (to start some services and login automatically, for example).
+* Run `make_vm.py`, this creates your raw Arch Linux VM image (`arch_disk.vm`,
+  by default). This script also installs base userspace packages and minimal
+  other packages into the image. The image is also configured (to start some
+  services and login automatically, for example).
 * Build a kernel (you can use the included Linux config from this repo) and
   make the kernel headers. Using kernel modules isn't supported yet (but should
   be the next feature).
@@ -51,7 +51,7 @@ This should be all you need to do:
   default host port that is forwarded to the VM).
 * Going forward you just need to run `run_vm.sh` to run your VM again.
 
-# Advanced deploy_vm.py usage
+# Advanced make_vm.py usage
 
 The `--custom-setup` and `--extra-packages` options can be used to customize
 your VM.
