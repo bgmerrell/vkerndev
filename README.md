@@ -12,10 +12,10 @@ These scripts do the following
   or initrd
 * Install some additional packages for development and X11 forwarding over SSH
 * Automatically enable dhcp, ssh, and automatic login
-* Run and boot the VM using qemu. The Linux kernel and headers are mounted from
-  specified locations (in run_vm.sh) on the host machine. This allows users to
-  develop and/or build kernels on their host machine and quickly run them in a
-  minimal VM.
+* Run the VM using qemu with KVM full virtualization. The Linux kernel and
+  headers are mounted from specified locations (in run_vm.sh) on the host
+  machine. This allows users to develop and/or build kernels on their host
+  machine and quickly run them in a minimal VM.
 
 Here's a [quick video overview](https://youtu.be/GeQZ2GKhfAE).
 
