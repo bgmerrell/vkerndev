@@ -17,7 +17,7 @@ These scripts do the following
   develop and/or build kernels on their host machine and quickly run them in a
   minimal VM.
 
-Here's a [quick video overview](https://www.youtube.com/watch?v=PhyRykOOgZM).
+Here's a [quick video overview](https://youtu.be/GeQZ2GKhfAE).
 
 This repo also contains a Linux kernel config file; it may or may not meet your
 needs.
