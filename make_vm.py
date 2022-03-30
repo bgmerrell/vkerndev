@@ -111,7 +111,8 @@ def provision_image(mnt_dir, packages, ssh_key_path, custom_setup_path):
     # run bundled setup script
     chrooted_cmd = 'cd /root && ./setup.sh && rm ./setup.sh'
     if custom_setup_path:
-        cmd = ['sudo', 'cp', custom_setup_path, mounted_root]
+        cmd = ['sudo', 'cp', custom_setup_path,
+               os.path.join(mounted_root, 'custom_setup.sh')]
         logging.debug(f'Running: {cmd}')
         subprocess.run(cmd, check=True)
         chrooted_cmd += ' && ./custom_setup.sh && rm ./custom_setup.sh'
