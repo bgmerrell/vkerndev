@@ -68,8 +68,9 @@ def parse_args():
             os.path.expanduser('~'), '.ssh/id_rsa.pub'))
     parser.add_argument(
         '-p', '--extra-packages', dest='extra_packages_path',
-        help='a new-line separated list of extra Arch Linux packages in '
-             'addition to the minimal packages that are installed by default.')
+        help='path to a file of new-line separated Arch Linux packages to '
+             'install in addition to the minimal packages that are installed '
+             'by default.')
     parser.add_argument(
         '--debug', action='store_true', help='print debug messages')
     return parser.parse_args()
