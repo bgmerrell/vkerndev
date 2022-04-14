@@ -58,7 +58,7 @@ def parse_args():
              'its data.',
         default='8G')
     parser.add_argument(
-        '-c', '--custom-setup', dest='custom_setup_path',
+        '-c', '--custom-setup', nargs='*', dest='custom_setup_paths',
         help='a custom setup script to run in addition to the bundled '
              'setup.sh script')
     parser.add_argument(
@@ -87,7 +87,7 @@ def get_all_packages(extra_packages):
     return all_packages
 
 
-def provision_image(mnt_dir, packages, ssh_key_path, custom_setup_path):
+def provision_image(mnt_dir, packages, ssh_key_path, custom_setup_paths):
     '''Provision the VM image with packages, files and configs.'''
     logging.debug('Provisioning VM...')
     if not mnt_dir:
@@ -111,12 +111,12 @@ def provision_image(mnt_dir, packages, ssh_key_path, custom_setup_path):
 
     # run bundled setup script
     chrooted_cmd = 'cd /root && ./setup.sh && rm ./setup.sh'
-    if custom_setup_path:
-        cmd = ['sudo', 'cp', custom_setup_path,
-               os.path.join(mounted_root, 'custom_setup.sh')]
+    for custom_setup_path in custom_setup_paths:
+        filename = os.path.basename(custom_setup_path)
+        cmd = ['sudo', 'cp', custom_setup_path, mounted_root]
         logging.debug(f'Running: {cmd}')
         subprocess.run(cmd, check=True)
-        chrooted_cmd += ' && ./custom_setup.sh && rm ./custom_setup.sh'
+        chrooted_cmd += f' && ./{filename} && rm ./{filename}'
     cmd = (f'sudo chroot {mnt_dir} /bin/bash -c "{chrooted_cmd}"')
     logging.debug(f'Running: {cmd}')
     subprocess.run(cmd, shell=True, check=True)
@@ -150,7 +150,7 @@ def main():
             args.mnt_dir,
             packages,
             args.ssh_key_path,
-            args.custom_setup_path)
+            args.custom_setup_paths)
 
 
 if __name__ == '__main__':
