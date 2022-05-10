@@ -59,6 +59,7 @@ def parse_args():
         default='8G')
     parser.add_argument(
         '-c', '--custom-setup', nargs='*', dest='custom_setup_paths',
+        default=[],
         help='a custom setup script to run in addition to the bundled '
              'setup.sh script')
     parser.add_argument(
